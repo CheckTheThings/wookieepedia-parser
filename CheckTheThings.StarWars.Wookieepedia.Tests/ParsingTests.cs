@@ -124,11 +124,11 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
         }
 
         [Fact]
-        public void Published()
+        public void Released()
         {
             var html = "<table><tr class=\"novel\"><td></td></tr></table>";
             var element = GetTrElement(html);
-            var result = WookieepediaParser.ParseIsPublished(element);
+            var result = WookieepediaParser.ParseIsReleased(element);
             result.Should().BeTrue();
         }
 
@@ -137,7 +137,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
         {
             var html = "<table><tr class=\"unpublished\"><td></td></tr></table>";
             var element = GetTrElement(html);
-            var result = WookieepediaParser.ParseIsPublished(element);
+            var result = WookieepediaParser.ParseIsReleased(element);
             result.Should().BeFalse();
         }
 
@@ -146,7 +146,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
         {
             var html = "<table><tr class=\"unreleased\"><td></td></tr></table>";
             var element = GetTrElement(html);
-            var result = WookieepediaParser.ParseIsPublished(element);
+            var result = WookieepediaParser.ParseIsReleased(element);
             result.Should().BeFalse();
         }
 
@@ -174,7 +174,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
             result.Title.Should().Be("The High Republic: Into the Dark");
             result.Year.Should().Be("232 BBY");
             result.ReleaseDate.Should().Be(new DateTime(2021, 02, 02));
-            result.IsPublished.Should().BeTrue();
+            result.IsReleased.Should().BeTrue();
             result.Type.Should().Be("novel");
         }
 

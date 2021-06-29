@@ -54,7 +54,7 @@ namespace CheckTheThings.StarWars.Wookieepedia
                 Type = ParseType(row),
                 Year = ParseYear(yearColumn),
                 ReleaseDate = ParseReleaseDate(releaseDateColumn),
-                IsPublished = ParseIsPublished(row),
+                IsReleased = ParseIsReleased(row),
             };
             return media;
         }
@@ -63,7 +63,7 @@ namespace CheckTheThings.StarWars.Wookieepedia
 
         internal static string ParseTitle(IElement nameColumn) => (nameColumn.QuerySelector("a") as HtmlElement).Title.Trim();
 
-        internal static bool ParseIsPublished(IElement row) =>
+        internal static bool ParseIsReleased(IElement row) =>
             !row.ClassList.Contains("unpublished") && !row.ClassList.Contains("unreleased");
 
         internal static DateTime? ParseReleaseDate(IElement releaseDateColumn) =>

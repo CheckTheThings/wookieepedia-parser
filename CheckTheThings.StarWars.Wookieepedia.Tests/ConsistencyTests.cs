@@ -15,7 +15,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
         [InlineData("./Timeline_of_Legends_media.html")]
         public async Task ContentElementExists(string fileName)
         {
-            var element = await InitializeAsync(fileName);
+            var element = await GetMainContent(fileName);
 
             element.Should().NotBeNull();
         }
@@ -25,7 +25,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
         [InlineData("./Timeline_of_Legends_media.html")]
         public async Task SortableTableExists(string fileName)
         {
-            var element = await InitializeAsync(fileName);
+            var element = await GetMainContent(fileName);
 
             var tables = element.QuerySelectorAll("table.sortable");
 
@@ -37,7 +37,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
         [InlineData("./Timeline_of_Legends_media.html")]
         public async Task SortableTablesHaveFiveColumns(string fileName)
         {
-            var element = await InitializeAsync(fileName);
+            var element = await GetMainContent(fileName);
 
             var tables = element.QuerySelectorAll("table.sortable");
 
@@ -53,14 +53,24 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
         [InlineData("./Timeline_of_Legends_media.html")]
         public async Task ManyRowsReturned(string fileName)
         {
-            var element = await InitializeAsync(fileName);
+            var element = await GetMainContent(fileName);
 
             var rows = element.QuerySelectorAll("table.sortable tr");
 
             rows.Should().NotBeNull().And.HaveCountGreaterThan(100);
         }
 
-        private static async Task<IElement> InitializeAsync(string fileName)
+        [Theory]
+        [InlineData("./timeline_of_canon_media.html")]
+        [InlineData("./Timeline_of_Legends_media.html")]
+        public async Task CompleteParse(string fileName)
+        {
+            var element = await GetHtmlDocumentAsync(fileName);
+            var results = WookieepediaParser.Parse(element);
+            results.Should().NotBeNull().And.HaveCountGreaterThan(100);
+        }
+
+        private static async Task<IElement> GetMainContent(string fileName)
         {
             var document = await GetHtmlDocumentAsync(fileName);
             return WookieepediaParser.GetMainContent(document);

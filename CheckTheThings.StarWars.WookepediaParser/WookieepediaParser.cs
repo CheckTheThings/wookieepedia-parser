@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -14,7 +13,7 @@ namespace CheckTheThings.StarWars.Wookieepedia
 {
     public class WookieepediaParser
     {
-        private readonly static string[] ValidTypes = new string[] { "film", "novel", "comic", "videogame", "promotional", "tv", "short", "junior", "young" };
+        private static readonly string[] ValidTypes = new string[] { "film", "novel", "comic", "videogame", "promotional", "tv", "short", "junior", "young" };
 
         public static async Task<IEnumerable<Media>> Parse(Stream stream)
         {
@@ -40,32 +39,24 @@ namespace CheckTheThings.StarWars.Wookieepedia
 
         internal static Media ParseRow(IElement row)
         {
-            try
-            {
-                var columns = row.QuerySelectorAll("td");
-                var yearColumn = columns[0];
-                //var typeColumn = columns[1];
-                var nameColumn = columns[2];
-                //var writersColumn = columns[3];
-                var releaseDateColumn = columns[4];
+            var columns = row.QuerySelectorAll("td");
+            var yearColumn = columns[0];
+            //var typeColumn = columns[1];
+            var nameColumn = columns[2];
+            //var writersColumn = columns[3];
+            var releaseDateColumn = columns[4];
 
 
-                var media = new Media
-                {
-                    Name = ParseName(nameColumn),
-                    Title = ParseTitle(nameColumn),
-                    Type = ParseType(row),
-                    Year = ParseYear(yearColumn),
-                    ReleaseDate = ParseReleaseDate(releaseDateColumn),
-                    IsPublished = ParseIsPublished(row),
-                };
-                return media;
-            }
-            catch (Exception ex)
+            var media = new Media
             {
-                Debugger.Break();
-                throw;
-            }
+                Name = ParseName(nameColumn),
+                Title = ParseTitle(nameColumn),
+                Type = ParseType(row),
+                Year = ParseYear(yearColumn),
+                ReleaseDate = ParseReleaseDate(releaseDateColumn),
+                IsPublished = ParseIsPublished(row),
+            };
+            return media;
         }
 
         internal static string ParseName(IElement nameColumn) => (nameColumn.QuerySelector("a") as HtmlElement).TextContent.Trim();

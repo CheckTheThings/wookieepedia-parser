@@ -9,7 +9,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
 {
     public class ParsingTests
     {
-        private static readonly HtmlParser parser = new();
+        private static readonly HtmlParser Parser = new();
 
         //        <tr class="novel">
         //<td data-sort-value="-257">c. <a href = "/wiki/232_BBY" title="232 BBY">232 BBY</a><sup id = "cite_ref-High_Republic_Date_2-0" class="reference"><a href = "#cite_note-High_Republic_Date-2" > &#91;2&#93;</a></sup></td>
@@ -178,7 +178,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
             result.Type.Should().Be("novel");
         }
 
-        private static IElement GetTrElement(string html) => parser.ParseFragment(html, null).GetElementsByTagName("tr").First();
-        private static IElement GetTdElement(string html) => parser.ParseFragment(html, null).GetElementsByTagName("td").First();
+        private static IElement GetTrElement(string html) => Parser.ParseFragment(html, null).GetElementsByTagName("tr").First();
+        private static IElement GetTdElement(string html) => Parser.ParseFragment(html, null).GetElementsByTagName("td").First();
     }
 }

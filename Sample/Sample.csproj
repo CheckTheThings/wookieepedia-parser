@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="reset.editorconfig" Version="0.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CheckTheThings.StarWars.WookepediaParser\CheckTheThings.StarWars.Wookieepedia.csproj" />
   </ItemGroup>
 

@@ -9,7 +9,7 @@ namespace Sample
 {
     internal class Program
     {
-        static async Task Main()
+        private static async Task Main()
         {
             var url = "https://starwars.fandom.com/wiki/Timeline_of_canon_media";
             var httpClient = new HttpClient();

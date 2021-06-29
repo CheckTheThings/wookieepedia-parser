@@ -8,7 +8,6 @@ namespace CheckTheThings.StarWars.Wookieepedia
         public string Title { get; set; }
         public string Type { get; set; }
         public bool IsPublished { get; set; }
-        public int Order { get; set; }
         public string Year { get; set; }
         public DateTime? ReleaseDate { get; set; }
     }

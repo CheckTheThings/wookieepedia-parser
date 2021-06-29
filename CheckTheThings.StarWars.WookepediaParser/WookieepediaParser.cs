@@ -1,20 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
+using AngleSharp.Html.Parser;
 
 [assembly: InternalsVisibleTo("CheckTheThings.StarWars.Wookieepedia.Tests")]
-
 namespace CheckTheThings.StarWars.Wookieepedia
 {
     public class WookieepediaParser
     {
-        private readonly static string[] ValidTypes = new string[] { "film", "novel", "comic", "videogame", "promotional", "tv", "short", "junior", "young" }; 
+        private readonly static string[] ValidTypes = new string[] { "film", "novel", "comic", "videogame", "promotional", "tv", "short", "junior", "young" };
 
-        public static IEnumerable<Media> Parse(IHtmlDocument document)
+        public static async Task<IEnumerable<Media>> Parse(Stream stream)
+        {
+            var parser = new HtmlParser();
+            var document = await parser.ParseDocumentAsync(stream);
+            return Parse(document);
+        }
+
+        internal static IEnumerable<Media> Parse(IHtmlDocument document)
         {
             var element = GetMainContent(document);
             var sortableTable = GetSortableTables(element);
@@ -22,12 +31,9 @@ namespace CheckTheThings.StarWars.Wookieepedia
             foreach (var table in sortableTable)
             {
                 var rows = table.QuerySelectorAll("tr");
-                foreach (var row in rows.Skip(1).Select((element, index) => new { element, index }))
+                foreach (var row in rows.Skip(1))
                 {
-                    var media = ParseRow(row.element);
-                    media.Order = row.index;
-
-                    yield return media;
+                    yield return ParseRow(row);
                 }
             }
         }

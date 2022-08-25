@@ -132,39 +132,33 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
 
 
         [Fact]
-        public void SimpleType()
+        public void Row_has_a_single_class()
         {
             var html = "<table><tr class=\"novel\"><td></td></tr></table>";
             var element = GetTrElement(html);
-            var result = TimelineParser.ParseType(element);
-            result.Should().Be("novel");
+            var result = TimelineParser.ParseClasses(element);
+            result.Should().HaveCount(1);
+            result.First().Should().Be("novel");
         }
 
         [Fact]
-        public void UnpublishedType()
+        public void Row_has_multiple_class()
         {
             var html = "<table><tr class=\"novel unpublished\"><td></td></tr></table>";
             var element = GetTrElement(html);
-            var result = TimelineParser.ParseType(element);
-            result.Should().Be("novel");
+            var result = TimelineParser.ParseClasses(element);
+            result.Should().HaveCount(2);
+            result.ElementAt(0).Should().Be("novel");
+            result.ElementAt(1).Should().Be("unpublished");
         }
 
         [Fact]
-        public void UnreleasedType()
-        {
-            var html = "<table><tr class=\"novel unreleased\"><td></td></tr></table>";
-            var element = GetTrElement(html);
-            var result = TimelineParser.ParseType(element);
-            result.Should().Be("novel");
-        }
-
-        [Fact]
-        public void MissingType()
+        public void Row_has_no_class()
         {
             var html = "<table><tr class=\"\"><td></td></tr></table>";
             var element = GetTrElement(html);
-            var result = TimelineParser.ParseType(element);
-            result.Should().BeNull();
+            var result = TimelineParser.ParseClasses(element);
+            result.Should().BeEmpty();
         }
 
         [Fact]
@@ -253,7 +247,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
             result.Title.Should().Be("The High Republic: Into the Dark");
             result.Year.Should().Be("232 BBY");
             result.ReleaseDate.Should().Be(new DateTime(2021, 02, 02));
-            result.Type.Should().Be("novel");
+            result.Classes.Should().HaveCount(1);
             result.Authors.Should().HaveCount(1);
             result.Authors.First().Name.Should().Be("Claudia Gray");
         }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CheckTheThings.StarWars.Wookieepedia
+﻿namespace CheckTheThings.StarWars.Wookieepedia
 {
     public class Media
     {
@@ -8,7 +6,7 @@ namespace CheckTheThings.StarWars.Wookieepedia
         public string Title { get; set; }
         public string Link { get; set; }
         
-        public string Type { get; set; }
+        public string[] Classes { get; set; }
         //public bool IsReleased { get; set; }
         public string Year { get; set; }
         public DateTime? ReleaseDate { get; set; }

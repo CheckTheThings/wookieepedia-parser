@@ -8,8 +8,6 @@ namespace CheckTheThings.StarWars.Wookieepedia
 {
     public class TimelineParser
     {
-        private static readonly string[] ValidTypes = new string[] { "film", "novel", "comic", "videogame", "promotional", "tv", "short", "junior", "young" };
-
         public static async Task<IEnumerable<Media>> ParseCanonTimelineAsync()
         {
             using var stream = await GetContentStream("https://starwars.fandom.com/wiki/Timeline_of_canon_media");
@@ -81,7 +79,7 @@ namespace CheckTheThings.StarWars.Wookieepedia
                     Name = ParseName(nameColumn),
                     Title = ParseTitle(nameColumn),
                     Link = ParseLink(nameColumn),
-                    Type = ParseType(row),
+                    Classes = ParseClasses(row),
                     Year = ParseYear(yearColumn),
                     ReleaseDate = ParseReleaseDate(releaseDateColumn),
                     //IsReleased = true,
@@ -113,8 +111,8 @@ namespace CheckTheThings.StarWars.Wookieepedia
             return null;
         }
 
-        internal static string ParseType(IElement row) =>
-            row.ClassList.Intersect(ValidTypes).SingleOrDefault();
+        internal static string[] ParseClasses(IElement row) =>
+            row.ClassList.Cast<string>().ToArray();
 
         internal static string ParseYear(IElement yearColumn)
         {

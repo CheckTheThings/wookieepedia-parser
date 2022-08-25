@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CheckTheThings.StarWars.WookepediaParser\CheckTheThings.StarWars.Wookieepedia.csproj" />
+    <ProjectReference Include="..\src\CheckTheThings.StarWars.Wookieepedia\CheckTheThings.StarWars.Wookieepedia.csproj" />
   </ItemGroup>
 
 </Project>

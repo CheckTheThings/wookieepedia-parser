@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="timeline_of_canon_media.html" />
-    <None Remove="Timeline_of_Legends_media.html" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Content Include="Force_Collector.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="The_High_Republic_Into_the_Dark.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Timeline_of_Legends_media.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -37,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CheckTheThings.StarWars.WookepediaParser\CheckTheThings.StarWars.Wookieepedia.csproj" />
+    <ProjectReference Include="..\..\src\CheckTheThings.StarWars.Wookieepedia\CheckTheThings.StarWars.Wookieepedia.csproj" />
   </ItemGroup>
 
 </Project>

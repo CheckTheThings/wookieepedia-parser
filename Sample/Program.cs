@@ -15,7 +15,7 @@ namespace Sample
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(url);
 
-            var mediaItems = await WookieepediaParser.Parse(await response.Content.ReadAsStreamAsync());
+            var mediaItems = await TimelineParser.Parse(await response.Content.ReadAsStreamAsync());
             var sortedMediaItems = mediaItems
                 .Where(m => m.ReleaseDate is not null)
                 .OrderBy(m => m.ReleaseDate)

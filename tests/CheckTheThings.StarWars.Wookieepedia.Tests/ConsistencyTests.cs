@@ -57,7 +57,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
 
             var rows = element.QuerySelectorAll("table.sortable tr");
 
-            rows.Should().NotBeNull().And.HaveCountGreaterThan(100);
+             rows.Should().NotBeNull().And.HaveCountGreaterThan(100);
         }
 
         [Theory]
@@ -66,14 +66,14 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
         public async Task CompleteParse(string fileName)
         {
             var element = await GetHtmlDocumentAsync(fileName);
-            var results = WookieepediaParser.Parse(element);
+            var results = TimelineParser.Parse(element);
             results.Should().NotBeNull().And.HaveCountGreaterThan(100);
         }
 
         private static async Task<IElement> GetMainContent(string fileName)
         {
             var document = await GetHtmlDocumentAsync(fileName);
-            return WookieepediaParser.GetMainContent(document);
+            return TimelineParser.GetMainContent(document);
         }
 
         private static async Task<IHtmlDocument> GetHtmlDocumentAsync(string fileName)

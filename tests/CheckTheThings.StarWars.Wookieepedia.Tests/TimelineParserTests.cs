@@ -250,6 +250,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
             result.Classes.Should().HaveCount(1);
             result.Authors.Should().HaveCount(1);
             result.Authors.First().Name.Should().Be("Claudia Gray");
+            result.Type.Should().Be("N");
         }
 
         private static IElement GetTrElement(string html) => Parser.ParseFragment(html, null).GetElementsByTagName("tr").First();

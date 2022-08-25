@@ -66,11 +66,10 @@ namespace CheckTheThings.StarWars.Wookieepedia
         {
             var columns = row.QuerySelectorAll("td");
             var yearColumn = columns[0];
-            //var typeColumn = columns[1];
+            var typeColumn = columns[1];
             var nameColumn = columns[2];
             var authorsColumn = columns[3];
             var releaseDateColumn = columns[4];
-
 
             try
             {
@@ -79,6 +78,7 @@ namespace CheckTheThings.StarWars.Wookieepedia
                     Name = ParseName(nameColumn),
                     Title = ParseTitle(nameColumn),
                     Link = ParseLink(nameColumn),
+                    Type = typeColumn.TextContent,
                     Classes = ParseClasses(row),
                     Year = ParseYear(yearColumn),
                     ReleaseDate = ParseReleaseDate(releaseDateColumn),

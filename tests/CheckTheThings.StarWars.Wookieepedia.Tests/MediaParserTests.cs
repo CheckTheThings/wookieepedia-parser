@@ -1,12 +1,4 @@
-﻿using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using AngleSharp.Html.Dom;
-using AngleSharp.Html.Parser;
-using FluentAssertions;
-using Xunit;
-
-namespace CheckTheThings.StarWars.Wookieepedia.Tests
+﻿namespace CheckTheThings.StarWars.Wookieepedia.Tests
 {
     public class MediaParserTests
     {

@@ -1,12 +1,4 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-using AngleSharp.Dom;
-using AngleSharp.Html.Dom;
-using AngleSharp.Html.Parser;
-using FluentAssertions;
-using Xunit;
-
-namespace CheckTheThings.StarWars.Wookieepedia.Tests
+﻿namespace CheckTheThings.StarWars.Wookieepedia.Tests
 {
     public class ConsistencyTests
     {
@@ -57,7 +49,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
 
             var rows = element.QuerySelectorAll("table.sortable tr");
 
-             rows.Should().NotBeNull().And.HaveCountGreaterThan(100);
+            rows.Should().NotBeNull().And.HaveCountGreaterThan(100);
         }
 
         [Theory]

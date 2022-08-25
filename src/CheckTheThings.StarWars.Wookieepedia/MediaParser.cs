@@ -5,11 +5,11 @@ namespace CheckTheThings.StarWars.Wookieepedia
 {
     public class MediaParser
     {
-        private static readonly Uri BaseUrl = new Uri("https://starwars.fandom.com/");
+        private static readonly Uri _baseUrl = new("https://starwars.fandom.com/");
 
         public static async Task<IEnumerable<KeyValuePair<string, string>>> ParseAsync(string urlPath)
         {
-            var uri = new Uri(BaseUrl, urlPath);
+            var uri = new Uri(_baseUrl, urlPath);
             var response = await new HttpClient().GetAsync(uri);
 
             return await ParseAsync(await response.Content.ReadAsStreamAsync());

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Linq;
-using AngleSharp.Dom;
-using AngleSharp.Html.Parser;
-using FluentAssertions;
-using Xunit;
-
-namespace CheckTheThings.StarWars.Wookieepedia.Tests
+﻿namespace CheckTheThings.StarWars.Wookieepedia.Tests
 {
     public class TimelineParserTests
     {
@@ -126,7 +119,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
             var element = GetElement($"<td>{dateString}</td>");
 
             var result = TimelineParser.ParseReleaseDate(element);
-             
+
             result.Should().Be(new DateTime(expectedYear, 1, 1));
         }
 

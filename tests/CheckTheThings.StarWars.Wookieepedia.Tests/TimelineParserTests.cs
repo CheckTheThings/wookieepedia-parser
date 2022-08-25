@@ -162,33 +162,6 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
         }
 
         [Fact]
-        public void Released()
-        {
-            var html = "<table><tr class=\"novel\"><td></td></tr></table>";
-            var element = GetTrElement(html);
-            var result = TimelineParser.ParseIsReleased(element);
-            result.Should().BeTrue();
-        }
-
-        [Fact]
-        public void Unpublished()
-        {
-            var html = "<table><tr class=\"unpublished\"><td></td></tr></table>";
-            var element = GetTrElement(html);
-            var result = TimelineParser.ParseIsReleased(element);
-            result.Should().BeFalse();
-        }
-
-        [Fact]
-        public void Unreleased()
-        {
-            var html = "<table><tr class=\"unreleased\"><td></td></tr></table>";
-            var element = GetTrElement(html);
-            var result = TimelineParser.ParseIsReleased(element);
-            result.Should().BeFalse();
-        }
-
-        [Fact]
         public void A_single_author()
         {
             var html = "<table><tr><td><a href = \"/wiki/Claudia_Gray\" title= \"Claudia Gray\" > Claudia Gray</a></td></tr></table>";

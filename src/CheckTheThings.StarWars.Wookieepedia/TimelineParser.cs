@@ -56,8 +56,7 @@ namespace CheckTheThings.StarWars.Wookieepedia
                 var rows = table.QuerySelectorAll("tr");
                 foreach (var row in rows.Skip(1))
                 {
-                    if (ParseIsReleased(row))
-                        yield return ParseRow(row);
+                    yield return ParseRow(row);
                 }
             }
         }
@@ -82,7 +81,6 @@ namespace CheckTheThings.StarWars.Wookieepedia
                     Classes = ParseClasses(row),
                     Year = ParseYear(yearColumn),
                     ReleaseDate = ParseReleaseDate(releaseDateColumn),
-                    //IsReleased = true,
                     Authors = ParseAuthors(authorsColumn),
                 };
                 return media;
@@ -98,9 +96,6 @@ namespace CheckTheThings.StarWars.Wookieepedia
         internal static string ParseTitle(IElement nameColumn) => (nameColumn.QuerySelector("a") as HtmlElement).Title.Trim();
 
         internal static string ParseLink(IElement nameColumn) => (nameColumn.QuerySelector("a") as IHtmlAnchorElement).PathName;
-
-        internal static bool ParseIsReleased(IElement row) =>
-            !row.ClassList.Contains("unpublished") && !row.ClassList.Contains("unreleased");
 
         internal static DateTime? ParseReleaseDate(IElement releaseDateColumn)
         {

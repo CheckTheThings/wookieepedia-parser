@@ -6,7 +6,7 @@ namespace CheckTheThings.StarWars.Wookieepedia
     {
         public string Name { get; set; }
         public string Title { get; set; }
-        public string Slug { get; set; }
+        public string Link { get; set; }
         
         public string Type { get; set; }
         //public bool IsReleased { get; set; }
@@ -16,5 +16,5 @@ namespace CheckTheThings.StarWars.Wookieepedia
         public List<string> Tags { get; set; } = new List<string>();
     }
 
-    public record Author(string Name, string Slug);
+    public record Author(string Name, string Link);
 }

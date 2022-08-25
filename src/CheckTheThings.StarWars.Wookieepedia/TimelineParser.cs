@@ -80,7 +80,7 @@ namespace CheckTheThings.StarWars.Wookieepedia
                 {
                     Name = ParseName(nameColumn),
                     Title = ParseTitle(nameColumn),
-                    Slug = ParseSlug(nameColumn),
+                    Link = ParseLink(nameColumn),
                     Type = ParseType(row),
                     Year = ParseYear(yearColumn),
                     ReleaseDate = ParseReleaseDate(releaseDateColumn),
@@ -99,7 +99,7 @@ namespace CheckTheThings.StarWars.Wookieepedia
 
         internal static string ParseTitle(IElement nameColumn) => (nameColumn.QuerySelector("a") as HtmlElement).Title.Trim();
 
-        internal static string ParseSlug(IElement nameColumn) => (nameColumn.QuerySelector("a") as IHtmlAnchorElement).PathName;
+        internal static string ParseLink(IElement nameColumn) => (nameColumn.QuerySelector("a") as IHtmlAnchorElement).PathName;
 
         internal static bool ParseIsReleased(IElement row) =>
             !row.ClassList.Contains("unpublished") && !row.ClassList.Contains("unreleased");

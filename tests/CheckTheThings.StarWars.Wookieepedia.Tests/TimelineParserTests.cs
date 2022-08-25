@@ -48,7 +48,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
                     <ul><li><small>blah<i><a>Another name</a></i>.</small></li></ul>
                 </td></tr></table>";
             var element = GetTrElement(html);
-            var result = TimelineParser.ParseSlug(element);
+            var result = TimelineParser.ParseLink(element);
             result.Should().Be("/wiki/The_High_Republic:_Into_the_Dark");
         }
 
@@ -204,7 +204,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
 
             var result = results.First();
             result.Name.Should().Be("Claudia Gray");
-            result.Slug.Should().Be("/wiki/Claudia_Gray");
+            result.Link.Should().Be("/wiki/Claudia_Gray");
         }
 
         [Fact]
@@ -217,7 +217,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
 
             var result = results.First();
             result.Name.Should().Be("Caitlin Sullivan Kelly");
-            result.Slug.Should().Be("");
+            result.Link.Should().Be("");
         }
 
         [Fact]

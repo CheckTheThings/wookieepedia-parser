@@ -3,6 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <PackageId>WookieepediaParser</PackageId>
+    <Title>WookieepediaParser</Title>
+    <Authors>MisinformedDNA</Authors>
+    <Description>A data scraper for Wookieepedia</Description>
+    <RepositoryUrl>https://github.com/CheckTheThings/wookieepedia-parser</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

@@ -136,13 +136,8 @@ namespace CheckTheThings.StarWars.Wookieepedia
         internal static List<Author> ParseAuthors(IElement authorsColumn) =>
             authorsColumn.QuerySelectorAll("a")
                 .Cast<IHtmlAnchorElement>()
-                .Select(a => new Author(a.Text.Trim(), ParseAuthorSlug(a)))
+                .Select(a => new Author(a.Text.Trim(), a.PathName))
                 .ToList();
-
-        private static string ParseAuthorSlug(IHtmlAnchorElement a) =>
-            !string.IsNullOrWhiteSpace(a.PathName)
-                ? a.PathName
-                : a.Text.Replace(' ', '_');
 
         internal static IHtmlCollection<IElement> GetSortableTables(IElement element) =>
             element.QuerySelectorAll("table.sortable");

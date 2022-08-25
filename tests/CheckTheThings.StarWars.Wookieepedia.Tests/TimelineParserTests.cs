@@ -11,17 +11,6 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
     {
         private static readonly HtmlParser Parser = new();
 
-        //        <tr class="novel">
-        //<td data-sort-value="-257">c. <a href = "/wiki/232_BBY" title="232 BBY">232 BBY</a><sup id = "cite_ref-High_Republic_Date_2-0" class="reference"><a href = "#cite_note-High_Republic_Date-2" > &#91;2&#93;</a></sup></td>
-        //< td style="background-color: #8DB3E2; text-align: center;">N</td>
-        //<td><i><a href = "/wiki/The_High_Republic:_Into_the_Dark" title="The High Republic: Into the Dark">The High Republic: Into the Dark</a></i>
-        //<ul><li><small>Occurs prior to and concurrently with<i><a href = "/wiki/The_High_Republic:_Light_of_the_Jedi" title= "The High Republic: Light of the Jedi" > The High Republic: Light of the Jedi</a></i>.</small></li></ul>
-        //</td>
-        //<td><a href = "/wiki/Claudia_Gray" title= "Claudia Gray" > Claudia Gray</a>
-        //</td>
-        //<td>2021-02-02
-        //</td></tr>
-
         [Fact]
         public void Template()
         {
@@ -228,7 +217,7 @@ namespace CheckTheThings.StarWars.Wookieepedia.Tests
 
             var result = results.First();
             result.Name.Should().Be("Caitlin Sullivan Kelly");
-            result.Slug.Should().Be("Caitlin_Sullivan_Kelly");
+            result.Slug.Should().Be("");
         }
 
         [Fact]

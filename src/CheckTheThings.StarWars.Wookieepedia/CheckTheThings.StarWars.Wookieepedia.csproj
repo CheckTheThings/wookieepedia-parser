@@ -8,7 +8,15 @@
     <Authors>MisinformedDNA</Authors>
     <Description>A data scraper for Wookieepedia</Description>
     <RepositoryUrl>https://github.com/CheckTheThings/wookieepedia-parser</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.17.1" />

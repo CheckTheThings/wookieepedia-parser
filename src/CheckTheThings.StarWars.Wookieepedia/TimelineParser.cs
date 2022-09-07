@@ -56,7 +56,9 @@ namespace CheckTheThings.StarWars.Wookieepedia
                 var rows = table.QuerySelectorAll("tr");
                 foreach (var row in rows.Skip(1))
                 {
-                    yield return ParseRow(row);
+                    Media media = ParseRow(row);
+                    if (media != null)
+                        yield return media;
                 }
             }
         }
@@ -87,7 +89,7 @@ namespace CheckTheThings.StarWars.Wookieepedia
             }
             catch (Exception)
             {
-                throw;
+                return null;
             }
         }
 

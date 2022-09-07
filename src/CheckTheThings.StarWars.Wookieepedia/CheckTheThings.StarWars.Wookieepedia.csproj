@@ -8,6 +8,7 @@
     <Description>A data scraper for Wookieepedia</Description>
     <RepositoryUrl>https://github.com/CheckTheThings/wookieepedia-parser</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
